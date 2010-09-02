@@ -1,0 +1,6 @@
+gcc -o menu menu.c `pkg-config --cflags --libs gtk+-2.0`
+
+でコンパイルしてください。追加のオプションはお好みで。
+
+記事URL
+  
