@@ -2,9 +2,6 @@
 #include <glib-object.h>
 #include <stdio.h>
 
-#define C_MONTH   10
-#define C_YEAR    2010
-
 
 /*
  *  カレンダー上の日付がクリックされたときに呼び出される
