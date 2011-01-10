@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fruits>
+    <fruit>
+        <item>りんご</item>
+        <price>150</price>
+    </fruit>
+    <fruit>
+        <item>みかん</item>
+        <price>250</price>
+    </fruit>
+    <fruit>
+        <item>メロン</item>
+        <price>1000</price>
+    </fruit>
+</fruits>
+
