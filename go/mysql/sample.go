@@ -75,7 +75,7 @@ func getMember(id int) (member Member, err error) {
 
 	err = Db.QueryRow(`
 		SELECT id, name, birthday, blood_type, hobby 
-		  FROM member 
+		  FROM member
 		 WHERE id = ?
 	`, id).Scan(&member.Id, &member.Name, &member.Birthday, &member.Bloodtype, &member.Hobby)
 	return
@@ -102,7 +102,9 @@ func main() {
 	fmt.Println(members)
 
 	member, err := getMember(members[1].Id)
-	if err != nil {
+	if err == sql.ErrNoRows {
+		log.Fatalln("そのIDのメンバーは存在しません")
+	} else if err != nil {
 		log.Fatalln(err)
 	}
 	fmt.Println("Get one member")
