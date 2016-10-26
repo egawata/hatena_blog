@@ -1,0 +1,13 @@
+{{template "header.html" .}}
+
+<h1>書籍リスト</h1>
+{{range .books}}
+<div style="margin: 10px 0">
+  書名: <a href="/book/get/{{.ID}}">{{.Name}}</a><br />
+  著者: {{.Author}}<br />
+  価格: {{.Price}}円<br />
+</div>
+{{end}}
+
+{{template "footer.html" .}}
+

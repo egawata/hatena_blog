@@ -1,0 +1,13 @@
+{{template "header.html" .}}
+<h1>Book</h1>
+
+{{if .book.ID}}
+書名: {{.book.Name}}<br />
+著者: {{.book.Author}}<br />
+価格: {{.book.Price}}円<br />
+{{else}}
+見つかりませんでした
+{{end}}
+
+{{template "footer.html" .}}
+
