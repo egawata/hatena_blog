@@ -27,12 +27,16 @@ func main() {
 	db := prepare()
 	defer db.Close()
 
-	var user User
-	db.First(&user, 1).Related(&user.Image)
-	fmt.Printf("名前    : %s\n", user.Name)
-	fmt.Printf("アイコン:\n")
-	fmt.Printf("  名称: %s\n", user.Image.Name)
-	fmt.Printf("  URL : %s\n", user.Image.Url)
+	for _, id := range []uint{1, 2, 3} {
+		var user User
+		fmt.Println("-------------------------------")
+		db.First(&user, id).Related(&user.Image)
+		fmt.Printf("名前    : %s\n", user.Name)
+		fmt.Printf("アイコン:\n")
+		fmt.Printf("  名称: %s\n", user.Image.Name)
+		fmt.Printf("  URL : %s\n", user.Image.Url)
+	}
+	fmt.Println("-------------------------------")
 }
 
 func prepare() *gorm.DB {
