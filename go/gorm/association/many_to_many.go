@@ -56,7 +56,7 @@ func prepare() *gorm.DB {
 }
 
 func prepareUsers(db *gorm.DB) {
-	var usernames = []string{"Mario", "ヤス", "たかし"}
+	var usernames = []string{"Mario", "Luigi", "Peach"}
 
 	for _, username := range usernames {
 		user := User{
