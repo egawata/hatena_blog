@@ -10,6 +10,10 @@ import (
 	"github.com/shamaton/msgpack/v2/ext"
 )
 
+type ProfileList struct {
+	Profiles []Profile
+}
+
 type Profile struct {
 	Name      string
 	Languages map[string]struct{}
@@ -22,17 +26,26 @@ func main() {
 	}
 	defer msgpack.RemoveExtCoder(&ProfileEncoder{}, &ProfileDecoder{})
 
-	p := &Profile{
-		Name:      "Alice",
-		Languages: map[string]struct{}{"en": {}, "ja": {}},
+	pl := &ProfileList{
+		Profiles: []Profile{
+			{
+				Name:      "Alice",
+				Languages: map[string]struct{}{"en": {}, "ja": {}},
+			},
+			{
+				Name:      "Bob",
+				Languages: map[string]struct{}{"en": {}, "fr": {}},
+			},
+		},
 	}
-	enc, err := msgpack.Marshal(p)
+
+	enc, err := msgpack.Marshal(pl)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println(hexdump.Dump(enc))
 
-	var dec Profile
+	var dec ProfileList
 	if err = msgpack.Unmarshal(enc, &dec); err != nil {
 		log.Fatal(err)
 	}
